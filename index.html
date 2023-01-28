@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <title>Rapunzel to the Rescue</title>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+</head>
+<body>
+    <a-scene id="scene" fireballs inspector-plugin-recast>
+        <a-assets>
+            <a-asset-item id="fireball" src="./assets/fireball/scene.gltf"></a-asset-item>
+            <a-asset-item id="boy" src="./assets/boy/scene.gltf"></a-asset-item>
+            <a-asset-item id="girl" src="./assets/girl/scene.gltf"></a-asset-item>
+            <a-asset-item id="tower" src="./assets/tower/scene.gltf"></a-asset-item>
+            <a-asset-item id="collider" src="./assets/nav/navmesh.gltf"></a-asset-item>
+        </a-assets>
+
+        <a-entity id="environment" environment="preset: forest; skytype: gradient; lighting: point"></a-entity>
+
+        <!--Enities-->
+        <a-entity id="fireball" gltf-model="#fireball" position="-5 1 1" scale="0.003 0.003 0.003" ></a-entity>
+        <a-entity id="boy" gltf-model="#boy" position="-3 1 1" scale="3 3 3"></a-entity>
+        <a-entity id="tower" gltf-model="#tower" position="10 0 0"></a-entity>
+        
+        <a-entity id="camera-rig" movement-controls="speed: 0.3; constrainToNavMesh: true" position="0 1 2">
+            <a-entity id="camera" position="0 1.6 0" look-controls="pointerLockEnabled: false">
+                <a-entity id="girl" gltf-model="#girl" position="0 -1 2" rotation="0 180 0"></a-entity>
+            </a-entity>
+        
+        <a-entity id="navigation-mesh" gltf-model="#collider" position="0 10 0" visible="false" nav-mesh></a-entity>
+
+    </a-scene>
+</body>
